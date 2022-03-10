@@ -50,3 +50,42 @@ const users = [
     gender: 'Female'
   }
 ]
+
+const userEmailContent = document.getElementById('user-table-email')
+const userRangeContent = document.getElementById('user-table-range')
+const userInfoContent = document.getElementById('user-table-info')
+
+let htmlEmails = ''
+let htmlRange = ''
+let htmlInfo = ''
+
+for (let i=0; i < users.length; i++) {
+  if (users[i].email.endsWith('academlo.com')){
+    htmlEmails += `
+      <div>${users[i].name}</div>
+      <div>${users[i].email}</div>
+    `
+  }
+
+  if(users[i].age > 20 && users[i].age < 40) {
+    htmlRange += `
+      <div>${users[i].name}</div>
+      <div>${users[i].age}</div>
+    `
+  }
+
+  htmlInfo += `
+    <div>${users[i].name}</div>
+    <div>${users[i].email}</div>
+    <div>${users[i].age}</div>
+    <div>${users[i].gender}</div>
+    <ul>
+      <li>${users[i].social[0].name} - ${users[i].social[0].url}</li>
+      <li>${users[i].social[1].name} - ${users[i].social[1].url}</li>
+    </ul>
+  `
+}
+
+userEmailContent.insertAdjacentHTML('beforeend', htmlEmails)
+userRangeContent.insertAdjacentHTML('beforeend', htmlRange)
+userInfoContent.insertAdjacentHTML('beforeend', htmlInfo)
